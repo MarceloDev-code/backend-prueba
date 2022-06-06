@@ -6,8 +6,18 @@ from rest_framework.decorators import api_view
 from .serializers import empresasSerializer, empleadosSerializer
 from .models import empresas, empleados
 # Create your views here.
+
+
 @api_view(['GET', 'POST'])
 def empresas_list(request):
+    """_summary_: List all empresas, or create a new empresa.
+
+    Args:
+        request (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     if request.method == 'GET':
         empresas_listado = empresas.objects.all()
         
@@ -29,6 +39,7 @@ def empresas_list(request):
     
 @api_view(['GET'])
 def empresas_detail(request, pk):
+    """_summary_: Retrieve a empresa object"""
     empresas_listado = empresas.objects.get(rut=pk)
     if request.method == 'GET': 
         empresas_serializer = empresasSerializer(empresas_listado) 
@@ -37,6 +48,15 @@ def empresas_detail(request, pk):
 
 @api_view(['GET'])
 def empleados_list(request,pk):
+    """summary: List all empleados, or create a new empleado.
+
+    Args:
+        request (_type_): GET
+        pk (_type_): STRING
+
+    Returns:
+        _type_: _json_
+    """
     if request.method == 'GET':
         empleados_listado = empleados.objects.all()
         
@@ -50,6 +70,14 @@ def empleados_list(request,pk):
     
 @api_view(['POST'])
 def empleados_create(request):
+    """_summary_: Create a new empleado.
+
+    Args:
+        request (_type_): 
+
+    Returns:
+        _type_: _description_
+    """
     empleados_data = JSONParser().parse(request)
     empleados_serializer = empleadosSerializer(data=empleados_data)
     if empleados_serializer.is_valid():
@@ -59,6 +87,7 @@ def empleados_create(request):
     
 @api_view(['GET'])
 def empleados_detail(request, pk):
+    """_summary_: Retrieve a empleado object"""
     empleados = empleados.objects.get(rut=pk)
     if request.method == 'GET': 
         empleados_serializer = empleadosSerializer(empleados) 
