@@ -6,9 +6,9 @@ se utilizo la libreria rest_framework para el manejo de los servicios.
 
 ## Instrucciones Deploy
 
-·Utilizar virtualenv para crear un ambiente virtual de python.
-·Instalar las dependencias de la aplicacion.
-·Migrar modelos
-·Crear un usuario con permisos de administrador.
-·hacer 'python manage.py runserver 8080' para iniciar el servidor.
+- Utilizar virtualenv para crear un ambiente virtual de python.
+- Instalar las dependencias de la aplicacion.
+- Migrar modelos
+- Crear un usuario con permisos de administrador.
+- hacer 'python manage.py runserver 8080' para iniciar el servidor.
 
